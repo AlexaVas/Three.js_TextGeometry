@@ -75,11 +75,19 @@ textGeometry.center();
 const textMaterial = new THREE.MeshMatcapMaterial({matcap: fontTexture});
 textMaterial.wireframe = false;
 
-gui
- .add(textMaterial, 'wireframe');
+// gui
+//  .add(textMaterial, 'wireframe');
+
 
 
 const text = new THREE.Mesh(textGeometry, textMaterial);
+
+const move = {
+    spin: ()=>{gsap.to(text.rotation, {duration:1, x: text.rotation.x + Math.PI*2})}
+}
+gui
+.add(move, 'spin')
+
 scene.add(text);
 
 //Objects
